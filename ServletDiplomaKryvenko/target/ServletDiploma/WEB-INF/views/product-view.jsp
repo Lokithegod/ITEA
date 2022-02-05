@@ -17,11 +17,12 @@
 <c:forEach items="${productList}" var="element">
 
     <table>
-        <tr><td></td><td>${element.name}</td></tr>
+        <tr><td></td><td id="productname">${element.name}</td></tr>
         <tr><td><img src="./static/images/products/${element.id}.png" width="300px" height="100%"/> </td><td>${element.text}</td></tr>
+        <tr><td></td><td id="price">${element.price}</td></tr>
         <td><img src='./static/images/minus.jpg' width="15" height="15" onclick="minus(${element.id})"/>
             <input type="text" id='${element.id}' size="2" value="1"/><img src="./static/images/plus.jpg" width="15" height="15" onclick="plus(${element.id})"/>
-            <input type="button" value="buy" onclick="buy(${element.id})"/></td>
+            <input type="button" value="rent" onclick="rent(${element.id})"/></td>
      <%--   <tr><td></td><td>${element.price}</td><a href ="./cart?id=${element.id}"><input type="button" value="buy" /></a></tr>  --%>
 
 
@@ -30,6 +31,9 @@
 </c:forEach>
 
 <script>
+    function  getName (name) {
+        var nameproduct = name;
+    }
 function minus(id) {
     document.getElementById(id).value = document.getElementById(id).value - 1;
 }
@@ -37,8 +41,11 @@ function minus(id) {
 function plus(id) {
     document.getElementById(id).value =+document.getElementById(id).value+ +1;
 }
-function buy(id) {
-    alert(id+ " : "+document.getElementById(id).value)
+function rent(id) {
+  //  var nameproduct = name;
+   // var priceproduct = price;
+    alert(  " rented for : "+document.getElementById(id).value + "hours. Price =");
+
 }
 
 
