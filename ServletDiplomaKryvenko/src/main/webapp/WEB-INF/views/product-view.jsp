@@ -22,14 +22,13 @@
         <tr><td></td><td id="price">${element.price}</td></tr>
         <td><img src='./static/images/minus.jpg' width="15" height="15" onclick="minus(${element.id})"/>
             <input type="text" id='${element.id}' size="2" value="1"/><img src="./static/images/plus.jpg" width="15" height="15" onclick="plus(${element.id})"/>
-            <input type="button" value="rent" onclick="rent(${element.id})"/></td>
-     <%--   <tr><td></td><td>${element.price}</td><a href ="./cart?id=${element.id}"><input type="button" value="buy" /></a></tr>  --%>
+            <input type="button" value="rent" name="rent"  onclick="rent(${element.id})"/></td>
+     <%--   <tr><td></td><td>${element.price}</td><a href ="./cart?id=${element.id}"><input type="button" value="buy" /></a></tr>               --%>
 
 
     </table>
     <br>
 </c:forEach>
-
 <script>
     function  getName (name) {
         var nameproduct = name;
@@ -44,11 +43,23 @@ function plus(id) {
 function rent(id) {
   //  var nameproduct = name;
    // var priceproduct = price;
-    alert(  " rented for : "+document.getElementById(id).value + "hours. Price =");
+    $.ajax({
+       // url: './cart',
+
+        url: './cart',
+        type: 'POST',
+        action: './product',
+        //data: {'id': id, 'numberOfProducts' : document.getElementById(id).value},
+        data: {'id': id, 'numberOfProducts' :  document.getElementById(id).value},
+        success: function(data){
+            document.getElementById("span").innerHTML=""+ data;
+            alert('ok');
+        }
+    });
+
+    //alert(  " rented for : "+document.getElementById(id).value + "hours. Price =");
 
 }
-
-
 </script>
 
 

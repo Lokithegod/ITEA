@@ -28,16 +28,22 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login= req.getParameter("login");
-        String password= req.getParameter("password");
+        String password= req.getParameter("pass");
+
+        System.out.println("Welcome to login controller. Login : " + login + "  password : "+password);
 
         Client client = loginService.getClientByLogin(login);
+        System.out.println("DB search. Login : " + client.getLogin() + "  password : "+client.getPassword());
         if (Objects.equals(login,client.getLogin())&& Objects.equals(password,client.getPassword()))
         {
             HttpSession session = req.getSession();
             req.setAttribute("validate" ,"TRUE");
             RequestDispatcher rd = req.getRequestDispatcher("./product");
-            rd.forward(req,resp);
+            //System.out.println("to ./product");
+            //rd.forward(req,resp);
             req.setAttribute("message","Welcome : "+client.getLogin()+ " !");
+            session.setAttribute("user_name",client.getLogin());
+            doGet(req,resp);
         }else{
             req.setAttribute("message","wrong login or password");
             doGet(req,resp);

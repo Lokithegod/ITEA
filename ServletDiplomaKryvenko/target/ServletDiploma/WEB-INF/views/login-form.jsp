@@ -15,25 +15,24 @@
 
 <body>
 
-<form id="loginForm" action="" method="post">
+<form id="loginForm" action="login" method="post">
 
 	<div class="field">
 		<label>Enter your login:</label>
-		<div class="input"><input type="text" name="" value="" id="login" /></div>
+		<div class="input"><input type="text" name="login" value="${login}" /></div>
 	</div>
-
 	<div class="field">
 		<a href="#" id="forgot">Forgot your password?</a>
 		<label>Enter your password:</label>
-		<div class="input"><input type="password" name="" value="" id="pass" /></div>
+		<div class="input"><input type="password" name="pass" value="${pass}"  /></div>
 	</div>
-
 	<div class="submit">
-		<button type="submit">Enter</button>
+		<button type="submit" formaction="login">Enter</button>
 		<label id="remember"><input name="" type="checkbox" value="" /> Remember me</label>
 	</div>
 
 </form>
+
 ${message}
 </body>
 </html>

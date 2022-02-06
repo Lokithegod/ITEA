@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CartController extends HttpServlet {
     private ProductService ps = new ProductService();
@@ -21,11 +18,24 @@ public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/cart-view.jsp");
+        HttpSession session = req.getSession();
+        Map<Integer,Product> productMap = (Map<Integer, Product>) session.getAttribute("productMap");
+
+
+        // req.setAttribute("productsListInCart",new ArrayList<Product>(productMap.keySet()));
+
+
+
+
+        rd.forward(req,resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        System.out.println("Welcome to cart controller ");
         int productid = Integer.valueOf(req.getParameter("id"));
         int numberOfProducts = Integer.valueOf(req.getParameter("numberOfProducts"));
         Product product =  ps.getByID(productid);
@@ -45,8 +55,9 @@ public class CartController extends HttpServlet {
         int numberP = (int) session.getAttribute("numberOfProducts");
         session.setAttribute("numberOfProducts",++numberP);
         session.setAttribute("cart", productMap);
-        writer.write(" "+numberP);
+        session.setAttribute("productMap",productMap);
         //productMap.add(ps.getByID(productid));
-        System.out.println("qweqweqwe"+productMap);
+        System.out.println("cart controller "+productMap);
+        writer.write(""+numberP);
     }
 }

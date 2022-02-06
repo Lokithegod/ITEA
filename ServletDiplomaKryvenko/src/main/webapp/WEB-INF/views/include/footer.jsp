@@ -10,8 +10,16 @@
         <tr>
             <td width="252" align="left">
                 <font color=white>
-                    Вы авторизировались как <br />
-                    В вашей корзине :<span id="span">0</span> товаров.
+                    Вы авторизировались как ${user_name} <br />
+                    В вашей корзине :<span id="span">
+                    <c:choose>
+                    <c:when test="${numberOfProducts== null}">
+                        0
+                    </c:when>
+                    <c:otherwise>
+                        ${numberOfProducts}
+                    </c:otherwise>
+                </c:choose></span> товаров.
                 </font>
             </td>
         </tr>

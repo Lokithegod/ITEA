@@ -26,17 +26,26 @@ Released   : 20110926
 <body>
 <div id="header" class="container">
     <div id="logo">
-        <h1><a href="#">GTA5 RP Market</a></h1>
+        <h1><a href="index.php">GTA5 RP Market</a></h1>
         <p> <a href="http://www.freecsstemplates.org"></a></p>
     </div>
     <div id="menu">
         <ul>
-            <li class="current_page_item"><a href="index.php">Home</a></li>
+          <%--  <li class="current_page_item"><a href="index.php">Home</a></li> --%>
             <li><a href="./product">Products</a></li>
             <li><a href="./rent">Rent</a></li>
             <li><a href="./registration">Registration</a></li>
             <li><a href="./cart">Cart</a></li>
-            <li><a href="./login">Login</a></li>
+            <li>
+            <c:choose>
+                <c:when test="${user_name== null}">
+                    <a href="./login">Login</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="./logout">Logout</a>
+                </c:otherwise>
+            </c:choose>
+            </li>
             <li></li>
         </ul>
     </div>
@@ -65,7 +74,3 @@ Released   : 20110926
         <div id="bg2">
             <div id="bg3">
                 <div id="content">
-                    <h2>Добро пожаловать в магазин !</h2>
-                    <p> Наши профессиональные менеджеры помогут быстро и качественно подобрать нужный Вам товар. Звоните круглосуточно! Втюхаем все!</p>
-                    <p>К сожалению, Вы можете наткнуться на схожий дизайн в интернете - это все потому,что автор лентяй и двоечник и не знает, как поменять шаблон.</p>
-                    <p>Надеемся, что это не скажется на Вашей покупательной способности.</p>
