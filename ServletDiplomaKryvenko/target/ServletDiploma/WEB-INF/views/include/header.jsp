@@ -74,4 +74,3 @@ Released   : 20110926
         <div id="bg2">
             <div id="bg3">
                 <div id="content">
-                   
