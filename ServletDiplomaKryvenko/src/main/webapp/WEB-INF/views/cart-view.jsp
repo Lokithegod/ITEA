@@ -13,7 +13,7 @@
     <script type="text/javascript" src="jquery.poptrox-0.1.js"></script>
 </head>
 <body>
-<c:forEach var="type" items="${productMap}">
+<%--<c:forEach var="type" items="${productMap}">
     <table>
 
         <script>
@@ -28,7 +28,22 @@
 
 
     </table>
-    </c:forEach>
+    </c:forEach>    --%>
+
+<c:forEach items="${productsListInCart}" var="element">
+
+    <table>
+        <tr><td></td><td id="productname">${element.name}</td></tr>
+        <tr><td><img src="./static/images/products/${element.id}.png" width="300px" height="100%"/> </td><td>${element.text}</td></tr>
+        <tr><td></td><td id="price">${element.price}</td></tr>
+            <%--   <tr><td></td><td>${element.price}</td><a href ="./cart?id=${element.id}"><input type="button" value="buy" /></a></tr>               --%>
+
+
+    </table>
+    <br>
+</c:forEach>
+
+
 
 </body>
 </html>

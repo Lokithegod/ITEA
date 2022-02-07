@@ -20,10 +20,11 @@ public class CartController extends HttpServlet {
 
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/cart-view.jsp");
         HttpSession session = req.getSession();
-        Map<Integer,Product> productMap = (Map<Integer, Product>) session.getAttribute("productMap");
+        Map<Product,Integer> productMap = (Map<Product, Integer>) session.getAttribute("productMap");
 
+       // ArrayList <Product> productsInCart = new ArrayList<Product>(productMap.values());
+        req.setAttribute("productsListInCart",new ArrayList<Product>(productMap.keySet()));
 
-        // req.setAttribute("productsListInCart",new ArrayList<Product>(productMap.keySet()));
 
 
 

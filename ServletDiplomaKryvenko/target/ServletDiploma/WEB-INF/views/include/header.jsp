@@ -7,7 +7,7 @@ Design by Free CSS Templates
 http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 
-Name       : Photoshoot
+Name       : Serhii Kryvenko
 Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20110926
@@ -18,7 +18,7 @@ Released   : 20110926
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Photoshoot by FCT</title>
+    <title>GTA 5 RP Rent</title>
     <link href="./static/css/style.css" rel="stylesheet" type="text/css" media="screen" />
     <script type="text/javascript" src="jquery-1.6.2.min.js"></script>
     <script type="text/javascript" src="jquery.poptrox-0.1.js"></script>
@@ -26,14 +26,14 @@ Released   : 20110926
 <body>
 <div id="header" class="container">
     <div id="logo">
-        <h1><a href="index.php">GTA5 RP Market</a></h1>
+        <h1><a href="./">GTA5 RP Market</a></h1>
         <p> <a href="http://www.freecsstemplates.org"></a></p>
     </div>
     <div id="menu">
         <ul>
           <%--  <li class="current_page_item"><a href="index.php">Home</a></li> --%>
+            <li><a href="./">HOME</a></li>
             <li><a href="./product">Products</a></li>
-            <li><a href="./rent">Rent</a></li>
             <li><a href="./registration">Registration</a></li>
             <li><a href="./cart">Cart</a></li>
             <li>
