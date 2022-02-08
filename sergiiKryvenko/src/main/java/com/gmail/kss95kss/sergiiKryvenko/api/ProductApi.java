@@ -3,16 +3,16 @@ package com.gmail.kss95kss.sergiiKryvenko.api;
 import com.gmail.kss95kss.sergiiKryvenko.api.model.ProductResponse;
 import com.gmail.kss95kss.sergiiKryvenko.repository.model.Product;
 import com.gmail.kss95kss.sergiiKryvenko.service.ProductService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
+@RequestMapping(value = "/product")
 public class ProductApi {
 
     private final ProductService productService ;
@@ -22,8 +22,9 @@ public class ProductApi {
         this.productService = productService;
     }
 
-    @GetMapping(path = "/product")
-    public ResponseEntity<ProductResponse> getProduct(@RequestParam(value = "category", required = false)String category)
+    @GetMapping(path = "/getall")
+    //public ResponseEntity<ProductResponse> getProduct(@RequestParam(value = "category", required = false)String category, Model model)
+    public String getProduct(@RequestParam(value = "category", required = false)String category, Model model)
     {
         List<Product> productList = new ArrayList();
         if (category==null){
@@ -32,8 +33,9 @@ public class ProductApi {
         {
             productList.addAll(productService.findByCategory(category));
         }
-
-        return  ResponseEntity.ok().body(new ProductResponse(productList));
+        model.addAttribute("productList",productList);
+        return  "product/list_products";
+        //return  ResponseEntity.ok().body(new ProductResponse(productList));
     }
 
 

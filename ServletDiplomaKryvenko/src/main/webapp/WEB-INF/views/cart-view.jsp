@@ -43,12 +43,14 @@
     <br>
 </c:forEach>
 
+<input type="button" value="Заказать" onclick="get()"/>
+
 
 
 </body>
 </html>
 <script>
-    function getIdFromJson(json)
+    function get(json)
     {
         var obj = JSON.parse(json);
         return obj.id;
