@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Cart</title>
+</head>
+<body>
+<form id="registrationform" action="registration" method="post">
+    <table>
+        <tr><td>login</td><td><input type='text' name='login' /></td></tr>
+        <tr><td>password</td><td><input type='password' name='password'/></td></tr>
+        <tr><td>re-password</td><td><input type='password' name='re_password'/></td></tr>
+        <tr><td>name</td><td><input type='text' name='name'/></td></tr>
+        <tr><td>gender</td><td>M<input type='radio' name='gender' value='male'/>F<input type='radio' name='gender' value='female' /></td></tr>
+        <tr><td>email</td><td><input type='text' name='email'/></td></tr>
+        <tr><td>address</td><td><select  name='address' >
+            <option value='DNR'>DNR</option>
+            <option value='LNR'>LNR</option>
+            <option value='Crimea'>Crimea</option>
+        </select>
+        </td></tr>
+        <tr><td>i agree to instal amigobrowser</td><td><input type='checkbox' name='agree' /></td></tr>
+        <tr><td></td><td><input type='submit' value='SEND' formaction="registration"/></td></tr>
+        <tr><td>${registration_message}</td></tr>
+
+        <!--<tr><td>name</td><td><input type='text' name='name' /></td></tr>
+
+
+            <input type='submit' value='SEND' />-->
+    </table>
+</form>
+
+
+</body>
+</html>
+
+<script>
+    function rent ()
+    {
+
+        $.ajax({
+            // url: './cart',
+
+            url: '/cart/add',
+            type: 'POST',
+            action: '/product',
+            //data: {'id': id, 'numberOfProducts' : document.getElementById(id).value},
+            data: {'id': id, 'numberOfProducts' :  document.getElementById(id).value},
+            success: function(data){
+                document.getElementById("span").innerHTML=""+ data;
+                alert('ok');
+            }
+        });
+    }
+
+</script>
