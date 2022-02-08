@@ -11,9 +11,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegistrationService {
+    public Connection connection = null;
     public static final String SET_USER_IN_DB = "INSERT INTO client (id, name, second_name, login, password, email, role) VALUES (NULL,?, NULL,?,?,?, NULL)";
     public Logger logger = Logger.getLogger(RegistrationService.class.getSimpleName());
-    public Connection connection = null;
 
 
     public RegistrationService() {

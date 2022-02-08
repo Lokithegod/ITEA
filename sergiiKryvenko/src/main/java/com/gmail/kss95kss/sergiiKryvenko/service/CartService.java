@@ -1,6 +1,7 @@
 package com.gmail.kss95kss.sergiiKryvenko.service;
 
 import com.gmail.kss95kss.sergiiKryvenko.repository.model.Product;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +9,8 @@ import java.util.Map;
 public interface CartService {
 
 
-    public Map<Product,Integer> findAll();
-    public Map<Product,Integer> deleteAll();
+    public List<Product> findAllClientProducts(Integer clientId);
+    public String addInCart(Integer clientId,Integer productId,Integer count);
+    public String  deleteAll(Integer clientId);
 
 }

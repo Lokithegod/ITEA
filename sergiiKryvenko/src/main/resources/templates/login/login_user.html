@@ -10,33 +10,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Products</title>
+    <title>Login</title>
 </head>
 <body>
-
-<table class="table table-bordered table-striped">
-    <thead class="thead-dark">
-    <tr>
-        <th>photo</th>
-        <th>name</th>
-        <th>price</th>
-        <th>description</th>
-        <th>rent</th>
-    </tr>
-    </thead>
-
-    <tbody>
-
-    <tr th:each="element : ${productList}">
-        <td><img th:src="@{${'./static/images/products/'+element.id+'.png'}}"/></td>
-        <td th:text="${element.name}"/>
-        <td th:text="${element.price}"/>
-        <td th:text="${element.text}"/>
-        <td><input type="button" value="rent" ></td>
-
-    </tr>
-    </tbody>
-</table>
 
 
 </body>
