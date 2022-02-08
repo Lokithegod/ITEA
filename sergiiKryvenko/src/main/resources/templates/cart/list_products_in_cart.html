@@ -1,0 +1,64 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Cart</title>
+</head>
+<body>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>photo</th>
+        <th>name</th>
+        <th>price</th>
+        <th>description</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="element : ${cartList}">
+        <td><img th:src="@{${'./static/images/products/'+element.id+'.png'}}"/></td>
+        <td th:text="${element.name}"/>
+        <td th:text="${element.price}"/>
+        <td th:text="${element.text}"/>
+
+
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
+
+<script>
+    function rent ()
+    {
+
+        $.ajax({
+            // url: './cart',
+
+            url: '/cart/add',
+            type: 'POST',
+            action: '/product',
+            //data: {'id': id, 'numberOfProducts' : document.getElementById(id).value},
+            data: {'id': id, 'numberOfProducts' :  document.getElementById(id).value},
+            success: function(data){
+                document.getElementById("span").innerHTML=""+ data;
+                alert('ok');
+            }
+        });
+    }
+
+</script>
